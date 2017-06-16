@@ -1,6 +1,6 @@
 class Site::Profile::AdsController < Site::ProfileController
 
-  before_action :set_ad, only: [:edit, :update]
+  before_action :set_ad, only: [:edit, :update, :destroy]
 
   def index
     @ads = Ad.to_the(current_member)
@@ -33,11 +33,20 @@ class Site::Profile::AdsController < Site::ProfileController
     end
   end
 
+  def destroy
+
+    if @ad.destroy
+      redirect_to site_profile_ads_path, notice: "Anúncio excluído com sucesso!"
+    else
+      render :index
+    end
+  end
+
     private
 
-      def set_ad
-        @ad = Ad.find(params[:id])
-      end
+    def set_ad
+      @ad = Ad.find(params[:id])
+    end
 
     def params_ad
       params.require(:ad).permit(:id, :brand, :model, :kind_id, :price, :picture)
