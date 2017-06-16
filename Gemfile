@@ -2,10 +2,12 @@ source 'https://rails-assets.org'
 
 # BootboxJS
 gem 'rails-assets-bootbox'
-#A simple, versatile notification library
-gem 'rails-assets-notifyjs'
+# Bootstrap Notify
+gem 'rails-assets-bootstrap.growl'
 #Bootstrap assets
 gem 'rails-assets-bootstrap', '3.3.7'
+ # Animate CSS
+gem 'rails-assets-animate-css'
 
 source 'https://rubygems.org'
 

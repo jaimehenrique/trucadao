@@ -15,7 +15,7 @@
     <%= stylesheet_link_tag    'backoffice', media: 'all', 'data-turbolinks-track' => true %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'backoffice', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'backoffice' %>
 
     <%= csrf_meta_tags %>
 
@@ -48,11 +48,7 @@
   </div>
   <!-- /#wrapper -->
 
-  <% if notice %>
-    <script type="text/javascript">
-      $.notify("<%= notice %>", "success");
-    </script>
-  <% end -%>
+<%= render partial: 'layouts/shared/notifications'  %>
 
 </body>
 

@@ -10,19 +10,19 @@
 sudo apt-get update
 sudo apt-get install imagemagick libmagickwand-dev
 ```
-* Graphviz (https://www.graphviz.org) - _Only for deployment_
+* Graphviz (https://www.graphviz.org) - _Only for development_
 ```
 sudo apt-get update
 sudo apt-get install graphviz
 ```
 ## Task dev:setup
 Running this task will drop, create, migrate and seed the database
-   
+
     rake dev:setup
-    
+
 ## Default users
 **Admin**
- 
+
     email: admin@admin.com
     senha: 123456
 **Member**
@@ -30,6 +30,6 @@ Running this task will drop, create, migrate and seed the database
     email: membro@membro.com
     senha: 123456
 
-## Admin area 
+## Admin area
 
     localhost:3000/backoffice
