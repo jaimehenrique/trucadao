@@ -4,10 +4,10 @@
             <%= image_tag ad.picture.url(:medium) %>
             <div class="caption">
                 <h4>
-                  <%= link_to truncate(ad.brand, length: 20), site_ad_detail_path(ad) %>
+                  <%= link_to truncate(ad.brand.name, length: 20), site_ad_detail_path(ad) %>
                 </h4>
-                <p><%= truncate(ad.model, length: 20) %></p>
-                <h4 class="pull-right"><%= humanized_money_with_symbol ad.price %>
+                <p><%= truncate(ad.model.name, length: 20) %></p>
+                <h4 class="pull-right"><%= ad.price == 0 ? "A negociar" : (humanized_money_with_symbol ad.price) %>
                 </h4>
             </div>
             <div class="ratings">

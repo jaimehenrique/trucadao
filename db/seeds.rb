@@ -11,7 +11,7 @@ puts "Cadastrando TIPOS..."
   Kind.find_or_create_by(description: "Caminhões")
   Kind.find_or_create_by(description: "Máquinas")
 
-puts "TIPOS......................................[OK]"
+puts "TIPOS......................................[OK] \n\n"
 
 puts "Cadastrando ADMINISTRADOR Padrão..."
 
@@ -22,7 +22,7 @@ Admin.create!(email: "admin@admin.com",
               role: 0
              )
 
-puts "ADMINISTRADOR..............................[OK]"
+puts "ADMINISTRADOR..............................[OK] \n\n"
 
 puts "Cadastrando MEMBRO Padrão..."
 
@@ -32,4 +32,4 @@ Member.create!(
   password_confirmation: "123456"
 )
 
-puts "MEMBRO.....................................[OK]"
+puts "MEMBRO.....................................[OK] \n\n"

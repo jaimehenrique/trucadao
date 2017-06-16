@@ -4,10 +4,10 @@
             <%= image_tag @ad.picture.url(:large), class:"img-responsive" %>
 
             <div class="caption-full">
-                <h4 class="pull-right"><%= humanized_money_with_symbol @ad.price %></h4>
-                <h4><a href="#"><%= @ad.brand %></a>
-                </h4>
-                <%= @ad.model %>
+                <h4 class="pull-right"><%= @ad.price == 0 ? "A negociar" : (humanized_money_with_symbol @ad.price) %></h4>
+                <h4><a href="#"><%= @ad.brand.name %></a></h4>
+                <%= @ad.model.name %>
+                <span><%= @ad.kind.description %></span>
             </div>
 
             <div class="ratings">

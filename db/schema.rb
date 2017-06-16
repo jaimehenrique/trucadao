@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613155607) do
+ActiveRecord::Schema.define(version: 20170616062738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 20170613155607) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "ads", force: :cascade do |t|
-    t.string   "brand"
-    t.string   "model"
     t.integer  "kind_id"
     t.integer  "member_id"
     t.datetime "created_at",           null: false
@@ -48,10 +46,20 @@ ActiveRecord::Schema.define(version: 20170613155607) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "brand_id"
+    t.integer  "model_id"
   end
 
+  add_index "ads", ["brand_id"], name: "index_ads_on_brand_id", using: :btree
   add_index "ads", ["kind_id"], name: "index_ads_on_kind_id", using: :btree
   add_index "ads", ["member_id"], name: "index_ads_on_member_id", using: :btree
+  add_index "ads", ["model_id"], name: "index_ads_on_model_id", using: :btree
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "kinds", force: :cascade do |t|
     t.string   "description", limit: 60
@@ -77,6 +85,18 @@ ActiveRecord::Schema.define(version: 20170613155607) do
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
+  create_table "models", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "brand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "models", ["brand_id"], name: "index_models_on_brand_id", using: :btree
+
+  add_foreign_key "ads", "brands"
   add_foreign_key "ads", "kinds"
   add_foreign_key "ads", "members"
+  add_foreign_key "ads", "models"
+  add_foreign_key "models", "brands"
 end
